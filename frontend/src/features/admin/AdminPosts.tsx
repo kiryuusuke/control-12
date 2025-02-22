@@ -3,12 +3,10 @@ import {useAppDispatch, useAppSelector} from "../../app/hooks.ts";
 import {getAllPosts} from "../../store/thunks/postThunk.ts";
 import {Box, Grid2} from "@mui/material";
 import Spinner from "../../components/UI/Spinner/Spinner.tsx";
-import PostItem from "./PostItem.tsx";
-import {NavLink} from "react-router-dom";
+import AdminPostItem from "./AdminPostItem.tsx";
 
 const Posts = () => {
     const dispatch = useAppDispatch();
-    const user = useAppSelector((state) => state.users.user);
     const posts = useAppSelector((state) => state.posts.posts);
     const loading = useAppSelector((state) => state.posts.isLoading);
 
@@ -18,15 +16,12 @@ const Posts = () => {
 
     return (
         <Box>
-            {user && user.token &&
-            <NavLink to='/addPost' className='btn btn-dark mt-3'>Add New Post</NavLink>
-            }
             {loading ? <Spinner/>
                 :
                 <Grid2 container spacing={2} justifyContent="center">
                     {posts.map((post) => (
                         <Grid2 key={post._id} >
-                            <PostItem posts={post}/>
+                            <AdminPostItem posts={post}/>
                         </Grid2>
                     ))}
                 </Grid2>

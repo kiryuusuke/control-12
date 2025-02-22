@@ -105,7 +105,7 @@ const PostItem: React.FC<Props> = ({posts, user}) => {
                             }}
                         />
                     )}
-                    <Typography component={Link} to={`/posts/${user?._id}/userpage`} variant="body2" color="textSecondary">
+                    <Typography component={Link} to={`/posts/${posts.author._id}/userpage`} variant="body2" color="textSecondary">
                         Author: {posts.author.displayName}
                     </Typography>
                 </Box>

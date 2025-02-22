@@ -25,10 +25,10 @@ const UserPostPage = () => {
             :
             <>
                 {posts.map((post) => (
-                    <>
+                    <div key={post._id}>
                         <h2>Page: {post.author.displayName}</h2>
-                    <UserPostPageItem key={post._id} posts={post} />
-                    </>
+                    <UserPostPageItem posts={post} />
+                    </div>
                 ))}
             </>
             }

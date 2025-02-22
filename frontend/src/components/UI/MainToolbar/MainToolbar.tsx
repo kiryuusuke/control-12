@@ -14,8 +14,10 @@ const MainToolbar = () => {
                 sx={{
                     justifyContent: 'center',
                     boxShadow: 'none',
-                    bgcolor: 'rgba(255, 255, 255, 0.2)',
+                    bgcolor: 'rgba(4, 4, 4, 0.29)',
                     backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    borderRadius: '15px',
                     mt: '20px'
                 }}>
                 <Toolbar>
