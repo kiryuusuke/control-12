@@ -16,7 +16,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/users', userRouter);
 
 const run = async() => {
-    await mongoose.connect('mongodb://localhost/');
+    await mongoose.connect('mongodb://localhost/gallery');
 
     app.listen(port, () => {
         console.log(`Server running on port: http://localhost:${port}`);

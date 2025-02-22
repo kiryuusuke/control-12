@@ -7,3 +7,9 @@ export interface UserTypes {
     googleId: string;
     userAvatar: string | null
 }
+
+export interface Post {
+    _id: string;
+    title: string;
+    photo: string | null;
+}
