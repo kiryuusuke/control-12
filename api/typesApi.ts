@@ -8,8 +8,8 @@ export interface UserTypes {
     userAvatar: string | null
 }
 
-export interface Post {
-    _id: string;
+export interface PostTypes {
     title: string;
+    author: string;
     photo: string | null;
 }

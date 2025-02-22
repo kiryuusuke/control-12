@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import path from "path";
 import mongoDb from "./mongoDb";
 import {userRouter} from "./router/userRouter";
+import {postRouter} from "./router/postRouter";
+import adminRouter from "./router/admin";
 
 const app = express();
 const port = 8000;
@@ -14,6 +16,8 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 
 
 app.use('/users', userRouter);
+app.use('/posts', postRouter);
+app.use('/admin', adminRouter);
 
 const run = async() => {
     await mongoose.connect('mongodb://localhost/gallery');
