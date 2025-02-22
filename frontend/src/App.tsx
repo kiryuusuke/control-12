@@ -5,6 +5,7 @@ import UsersPosts from "./features/posts/UsersPosts.tsx";
 import LoginPage from "./features/users/LoginPage.tsx";
 import RegisterPage from "./features/users/RegisterPage.tsx";
 import UserPostPage from "./features/posts/UserPostPage.tsx";
+import PostForm from "./components/PostForm/PostForm.tsx";
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Posts /> } />
                 <Route path='/myposts' element={<UsersPosts /> } />
+                <Route path='/addPost' element={<PostForm /> } />
                 <Route path='/posts/:userId/userpage' element={<UserPostPage /> } />
                 <Route path='/login' element={<LoginPage /> } />
                 <Route path='/register' element={<RegisterPage /> } />

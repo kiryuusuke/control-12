@@ -10,7 +10,7 @@ const MainToolbar = () => {
     return (
         <>
             <AppBar
-                position='fixed'
+                position='sticky'
                 sx={{
                     justifyContent: 'center',
                     boxShadow: 'none',

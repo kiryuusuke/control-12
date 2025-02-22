@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 
 interface Props {
     posts: Post;
-    user: User | null
+    user?: User | null
 }
 
 const PostItem: React.FC<Props> = ({posts, user}) => {

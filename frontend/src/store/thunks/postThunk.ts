@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {Post} from "../../typesUI.ts";
+import {Post, PostMutation} from "../../typesUI.ts";
 import axiosApi from "../../axiosApi.ts";
 import {RootState} from "../../app/store.ts";
 
@@ -38,5 +38,23 @@ export const deletePost = createAsyncThunk<void, { userId: string; postId: strin
             headers: {Authorization: token}
         });
 
+    }
+);
+
+export const addPost = createAsyncThunk<void, PostMutation, {state: RootState}>(
+    'posts/addPost',
+    async(post, {getState}) => {
+        const token = getState().users.user?.token;
+        const data = new FormData();
+        const postKeys = Object.keys(post) as (keyof PostMutation)[];
+        postKeys.forEach((key) => {
+            const value = post[key];
+            if(value !== null) {
+                data.append(key, value);
+            }
+        })
+        await axiosApi.post('/posts', data, {
+            headers: {Authorization: token}
+        });
     }
 )
