@@ -3,7 +3,6 @@ import Post from "../models/Post";
 import auth, {RequestWithUser} from "../middleware/auth";
 import {imagesUpload} from "../multer";
 import {PostTypes} from "../typesApi";
-import permit from "../middleware/permit";
 
 export const postRouter = express.Router();
 
