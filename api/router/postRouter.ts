@@ -10,7 +10,7 @@ postRouter.get('/', async(req, res, next) => {
     try {
         const {userId} = req.query;
         if(userId) {
-             res.status(200).send(await Post.find({author: userId}));
+             res.status(200).send(await Post.find({author: userId}).populate('author', '_id displayName'));
              return
         }
         const response = await Post.find().populate('author', 'displayName');
@@ -40,7 +40,7 @@ postRouter.get('/:userId/userpage', async(req, res, next) => {
         if (!userId) {
            res.status(404).send({message: 'User not found'});
         }
-        const author = await Post.find({author: userId});
+        const author = await Post.find({author: userId}).populate('author', 'displayName');
         res.status(200).send(author);
     } catch(e) {
         next(e)

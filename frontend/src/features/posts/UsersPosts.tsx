@@ -7,7 +7,9 @@ import PostItem from "./PostItem.tsx";
 
 const UsersPosts = () => {
     const location = useLocation();
-    const userId = new URLSearchParams(location.search).get('userId');    const dispatch = useAppDispatch();
+    const userId = new URLSearchParams(location.search).get('userId');
+    const dispatch = useAppDispatch();
+    const user = useAppSelector((state => state.users.user));
     const userPosts = useAppSelector((state) => state.posts.posts);
     const loading = useAppSelector((state) => state.posts.isLoading);
 
@@ -26,7 +28,7 @@ const UsersPosts = () => {
             :
                 <>
                     {userPosts.map((userPost) => (
-                        <PostItem key={userPost._id} posts={userPost} />
+                        <PostItem key={userPost._id} posts={userPost} user={user}/>
                     ))}
                 </>
             }

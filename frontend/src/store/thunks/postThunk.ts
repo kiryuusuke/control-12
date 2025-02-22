@@ -21,3 +21,22 @@ export const getUserPosts = createAsyncThunk<Post[], string, {state: RootState}>
         return response.data || []
     }
 );
+
+export const getUserPage = createAsyncThunk<Post[], string>(
+    'posts/getUserPage',
+    async(userId) => {
+        const response = await axiosApi.get(`/posts/${userId}/userpage`);
+        return response.data || []
+    }
+)
+
+export const deletePost = createAsyncThunk<void, { userId: string; postId: string }, {state: RootState}>(
+    'posts/deletePost',
+    async({ userId, postId }, {getState}) => {
+        const token = getState().users.user?.token;
+        await axiosApi.delete(`/posts/${userId}?postId=${postId}`, {
+            headers: {Authorization: token}
+        });
+
+    }
+)
