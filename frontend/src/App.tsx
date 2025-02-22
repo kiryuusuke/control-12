@@ -1,9 +1,19 @@
+import MainToolbar from "./components/UI/MainToolbar/MainToolbar.tsx";
+import {Route, Routes} from "react-router-dom";
+import Posts from "./features/posts/Posts.tsx";
 
 const App = () => {
     return (
-        <div>
+        <>
+            <header>
+                <MainToolbar />
+            </header>
 
-        </div>
+            <Routes>
+                <Route path="/" element={<Posts />} />
+                <Route path="*" element={<p>404</p>} />
+            </Routes>
+        </>
     );
 };
 

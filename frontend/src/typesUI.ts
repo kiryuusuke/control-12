@@ -41,3 +41,17 @@ export interface LoginUser {
     email: string;
     password: string;
 }
+
+export interface Post {
+    _id: string;
+    title: string;
+    author: User;
+    photo: string | null;
+}
+
+export interface PostMutation {
+    title: string;
+    author: string;
+    photo: File | null;
+}
+
