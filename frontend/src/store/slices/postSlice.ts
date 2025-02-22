@@ -1,17 +1,15 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {Post} from "../../typesUI.ts";
-import {getAllPosts} from "../thunks/postThunk.ts";
+import {getAllPosts, getUserPosts} from "../thunks/postThunk.ts";
 
 interface PostSliceState {
     posts: Post[];
-    onePost: Post | null;
     isLoading: boolean;
     isError: boolean;
 }
 
 const initialState: PostSliceState = {
     posts: [],
-    onePost: null,
     isLoading: false,
     isError: false
 }
@@ -36,6 +34,24 @@ const PostSlice = createSlice({
             )
             .addCase(
                 getAllPosts.rejected, (state) => {
+                    state.isLoading = false;
+                    state.isError = true;
+                }
+            )
+            .addCase(
+                getUserPosts.pending, (state) => {
+                    state.isLoading = true;
+                    state.isError = false
+                }
+            )
+            .addCase(
+                getUserPosts.fulfilled, (state, action) => {
+                    state.isLoading = false;
+                    state.posts = action.payload
+                }
+            )
+            .addCase(
+                getUserPosts.rejected, (state) => {
                     state.isLoading = false;
                     state.isError = true;
                 }

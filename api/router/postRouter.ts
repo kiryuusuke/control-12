@@ -13,7 +13,7 @@ postRouter.get('/', async(req, res, next) => {
              res.status(200).send(await Post.find({author: userId}));
              return
         }
-        const response = await Post.find();
+        const response = await Post.find().populate('author', 'displayName');
         res.status(200).send(response);
     } catch(e) {
         next(e)
